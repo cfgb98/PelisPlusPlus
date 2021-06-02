@@ -1,0 +1,36 @@
+<%-include('partials/_header');%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <div class="card-body">
+                <form action="/edit/<%= movie._id %>" method="POST">
+                    <h1>Editar</h1>
+                    <div class="form-group">
+                        <input type="text" name="title" placeholder="Inserta un t&iacute;tulo" class="form-control" value="<%= movie.title %>">
+                    <div class="form-group">
+                        <input type="text" name="year" placeholder="Inserta un año de 4 digitos" class="form-control" value="<%= movie.title %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="category" placeholder="Escribe una categoria" class="form-control" value="<%= movie.title %>">
+                    </div>
+                    <div class="form-group">
+                        <textarea  name="actors"  cols="80" placeholder="Annabelle Wallis, Ward Horton, Alfre Woodard" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="director" placeholder="Escribe un nombre" class="form-control" value="<%= movie.director %>">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="description" placeholder="John Form encuentra el regalo perfecto para Mia, su esposa embarazada: una preciosa muñeca antigua llamada Annabelle. Una noche, una secta satánica les ataca brutalmente y provocan que un ente maligno se apodere de Annabelle." class="form-control" value="<%= movie.title %>">
+                    </div>
+
+
+                    </div>
+                    <div class="form-group">
+                     <textarea name="description"  cols="80" class="form-control" placeholder="Inserta una descripci&oacute;n"><%= movie.description %></textarea>
+                 </div>
+                 <button type="submit" class="btn btn-primary btn-block">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%-include('partials/_footer');%>
