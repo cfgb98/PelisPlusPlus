@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 //conectar a la BD,si no existe se crea automaticamente
-mongoose.connect('mongodb://localhost/pelisplusplus').then(db=>console.log('conexión a la BD'+db+ "realizada correctamente"))
+mongoose.connect('mongodb://localhost/pelisplusplus').then(db=>console.log('conexión a la BD '+db+ " realizada correctamente"))
 .catch(err=>console.error("Ha ocurrido un error: "+err));
 //importar rutas
 const indexRoutes = require('./routes/index');
