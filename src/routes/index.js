@@ -12,8 +12,8 @@ res.render('index',{
 });
 
 router.post('/add',async (req, res)=>{
-   const Movie = new Movie(req.body);  
-   await Movie.save();//guardar en la bd
+   const movie = new Movie(req.body);  
+   await movie.save();//guardar en la bd
 res.redirect('/');//re dirigir a la pag principal
 });
 
