@@ -41,14 +41,14 @@
                     </tr>
                    </thead>
                    <tbody>
-                       <% for(var i=0;i<movies.length;i++){%>
+                    <% for(var i=0;i<movies.length;i++){%>
                          <tr>
                              <td><%= i+1%></td>
                              <td><%= movies[i].title %></td>
                              <td><%= movies[i].year</td>
-                             <td><%= movies[i].category</td>
-                             <td><%= movies[i].director</td>
-                             <td><%= movies[i].actors</td>
+                             <td><%= movies[i].category %></td>
+                             <td><%= movies[i].director %></td>
+                             <td><%= movies[i].actors %></td>
                              <td><%= movies[i].description %></td>
                              <td>
                                  <a href="/delete/<%= movies[i]._id %>" class="btn btn-danger">Eliminar</a>
@@ -56,7 +56,7 @@
                             </td>
                              
                          </tr>
-                      <% } %>
+                         <% } %>
                    </tbody>
                </table>
            </div>
