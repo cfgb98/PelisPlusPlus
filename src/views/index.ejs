@@ -6,10 +6,22 @@
                <div class="card-body">
                    <form action="/add" method="POST">
                        <div class="form-group">
-                           <input type="text" name="title" placeholder="Inserta un t&iacute;tulo" class="form-control">
+                           <input type="text" name="title" placeholder="Escribe un t&iacute;tulo" class="form-control">
                        </div>
                        <div class="form-group">
-                        <textarea name="description"  cols="80" class="form-control" placeholder="Inserta una descripci&oacute;n"></textarea>
+                        <input type="text" name="year" placeholder="Escribe un &ntilde;o de 4 d&tilde;igitos" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="category" placeholder="Escribe una categor&iacute;a" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="director" placeholder="Escribe nombre del director" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="actors"  placeholder="Escribe" class="form-control"></textarea>
+                    </div>
+                       <div class="form-group">
+                        <textarea name="description"  cols="80" class="form-control" placeholder="Escribe una descripci&oacute;n"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Agregar</button>
                    </form>
@@ -21,22 +33,23 @@
                     <tr>
                         <th>N°</th>
                         <th>T&iacute;tulo</th>
+                        <th>A&ntilde;o</th>
+                        <th>Categor&iacute;a</th>
+                        <th>Director</th>
+                        <th>Actores</th>
                         <th>Descripci&oacute;n</th>
                         <th>Operaci&oacute;n</th>
                     </tr>
                    </thead>
                    <tbody>
-                       <% for(var i=0;i<tasks.length;i++){%>
+                       <% for(var i=0;i<movies.length;i++){%>
                          <tr>
                              <td><%= i+1%></td>
-                             <td><%= tasks[i].title %></td>
-                             <td><%= tasks[i].description %></td>
+                             <td><%= movies[i].title %></td>
+                             <td><%= movies[i].description %></td>
                              <td>
-                                 <a href="/update/<%= tasks[i]._id %>" 
-                                    class="btn <%= tasks[i].status ? 'btn-success' : 'btn-dark' %>">
-                                    Hecho</a>
-                                 <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Eliminar</a>
-                                 <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">Editar</a>
+                                 <a href="/delete/<%= movies[i]._id %>" class="btn btn-danger">Eliminar</a>
+                                 <a href="/edit/<%= movies[i]._id %>" class="btn btn-info">Editar</a>
                             </td>
                              
                          </tr>

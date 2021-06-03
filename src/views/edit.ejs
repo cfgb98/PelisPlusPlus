@@ -6,9 +6,9 @@
                 <form action="/edit/<%= movie._id %>" method="POST">
                     <h1>Editar</h1>
                     <div class="form-group">
-                        <input type="text" name="title" placeholder="Inserta un t&iacute;tulo" class="form-control" value="<%= movie.title %>">
+                        <input type="text" name="title" placeholder="Escribe un t&iacute;tulo" class="form-control" value="<%= movie.title %>">
                     <div class="form-group">
-                        <input type="text" name="year" placeholder="Inserta un a&ntilde;o de 4 digitos" class="form-control" value="<%= movie.year %>">
+                        <input type="text" name="year" placeholder="Escribe un a&ntilde;o de 4 d&iacute;gitos" class="form-control" value="<%= movie.year %>">
                     </div>
                     <div class="form-group">
                         <input type="text" name="category" placeholder="Escribe una categor&iacute;a" class="form-control" value="<%= movie.category %>">
@@ -19,12 +19,9 @@
                     <div class="form-group">
                         <textarea  name="actors"  cols="80" placeholder="Escribe nombres de actores" class="form-control" value="<%= movie.actors %>"></textarea>
                     </div>
-                    <div class="form-group">
-                        <textarea name="description" placeholder="inserta una descripci&oacute;n" class="form-control" value="<%= movie.description %>"></textarea>
-                    </div>
                     </div>
                     <div class="form-group">
-                     <textarea name="description"  cols="80" class="form-control" placeholder="Inserta una descripci&oacute;n"><%= movie.description %></textarea>
+                     <textarea name="description"  cols="80" class="form-control" placeholder="Escribe una descripci&oacute;n"><%= movie.description %></textarea>
                  </div>
                  <button type="submit" class="btn btn-primary btn-block">Actualizar</button>
                 </form>
