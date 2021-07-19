@@ -1,6 +1,59 @@
 <%-include('partials/_header');%>
-   <div class="container">
-       <div class="row">
+
+<style>
+
+
+
+
+.col-md-7a{
+    background-color:transparent;
+    width: 100%;
+    height: auto;
+
+    word-wrap: break-word;
+   
+    float: none;
+}
+
+.card-body{
+    background-color: transparent;
+}
+
+.card-body button{
+    background-color: rgb(61, 61, 61);
+    border-radius: 15px;
+}
+
+.card-body button:hover{
+    background-color: rgb(117, 117, 117);
+    border-radius: 15px;
+}
+
+.col-md-5{
+    background-color: transparent;
+    width: 500px;
+    margin: auto;
+
+}
+
+h1{
+    text-align: center;
+    color: gray;
+}
+
+#title{
+    background-color: rgb(61, 61, 61);
+    width: 80%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    color: white;
+    margin-top: 150px;
+    border-radius: 20px;
+}
+</style>
+
+    <h1>AGREGAR PELICULAS</h1>
            <div class="col-md-5">
                <div class="card-body">
                    <form action="/add" method="POST">
@@ -26,40 +79,40 @@
                    </form>
                </div>
            </div> <!--Boostrap4 usa 12 columnas, 5+7=12-->
-           <div class="col-md-7">
-               <table class="table table-bordered table-hover">
-                   <thead>
-                    <tr>
-                        <th>N°</th>
-                        <th>T&iacute;tulo</th>
-                        <th>A&ntilde;o</th>
-                        <th>Categor&iacute;a</th>
-                        <th>Director</th>
-                        <th>Actores</th>
-                        <th>Descripci&oacute;n</th>
-                        <th>Operaci&oacute;n</th>
-                    </tr>
-                   </thead>
-                   <tbody>
-                    <% for(var i=0;i<movies.length;i++){%>
-                         <tr>
-                             <td><%= i+1%></td>
-                             <td><%= movies[i].title %></td>
-                             <td><%= movies[i].year %></td>
-                             <td><%= movies[i].category %></td>
-                             <td><%= movies[i].director %></td>
-                             <td><%= movies[i].actors %></td>
-                             <td><%= movies[i].description %></td>
-                             <td>
-                                 <a href="/delete/<%= movies[i]._id %>" class="btn btn-danger">Eliminar</a>
-                                 <a href="/edit/<%= movies[i]._id %>" class="btn btn-info">Editar</a>
-                            </td>
-                             
-                         </tr>
-                         <% } %>
-                   </tbody>
-               </table>
-           </div>
-       </div>
-   </div>
+       
+<div id="title"><h3>Peliculas</h3></div>
+   <div class="col-md-7a">
+    <table class="table table-bordered table-hover">
+        <thead>
+         <tr>
+             <th>N°</th>
+             <th>T&iacute;tulo</th>
+             <th>A&ntilde;o</th>
+             <th>Categor&iacute;a</th>
+             <th>Director</th>
+             <th>Actores</th>
+             <th>Descripci&oacute;n</th>
+             <th>Operaci&oacute;n</th>
+         </tr>
+        </thead>
+        <tbody>
+         <% for(var i=0;i<movies.length;i++){%>
+              <tr>
+                  <td><%= i+1%></td>
+                  <td><%= movies[i].title %></td>
+                  <td><%= movies[i].year %></td>
+                  <td><%= movies[i].category %></td>
+                  <td><%= movies[i].director %></td>
+                  <td><%= movies[i].actors %></td>
+                  <td><%= movies[i].description %></td>
+                  <td>
+                      <a href="/delete/<%= movies[i]._id %>" class="btn btn-danger">Eliminar</a>
+                      <a href="/edit/<%= movies[i]._id %>" class="btn btn-info">Editar</a>
+                 </td>
+                  
+              </tr>
+              <% } %>
+        </tbody>
+    </table>
+</div>
    <%-include('partials/_footer');%>

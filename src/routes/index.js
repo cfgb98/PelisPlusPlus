@@ -1,45 +1,65 @@
-//const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/movie');
 
-router.get('/',async(req, res)=>{
-   const movies = await Movie.find();//traer datos desde bd
-   console.log(movies);
-res.render('index',{
-    movies
-});
-});
-
 router.post('/add',async (req, res)=>{
-   const movie = new Movie(req.body);  
-   await movie.save();//guardar en la bd
-res.redirect('/');//re dirigir a la pag principal
+const {title, year, category, director, actors, description}=req.body;
+
+const newMovie= new Movie({ 
+    title,
+    year,
+    category,
+    director,
+    actors,
+    description
+ });// crear nuevo dato
+
+  await newMovie.save(); // se almacena en base de datos
+ console.log(newMovie);
+
+ res.redirect('/');
 });
 
-router.get('/update/:id', async (req, res)=>{
-    const { id } = req.params;
-    const Movie = await Movie.findById(id);
-   await Movie.save();
-   res.redirect('/');
-});
+router.get('/',async(req, res)=>{
+    const movies = await Movie.find();//traer datos desde bd
+    console.log(movies);
+ res.render('index',{movies});
+ });
 
 //pintar formulario para editar
 router.get('/edit/:id',async(req, res)=>{
-    const { id } = req.params;
-    const Movie = await Movie.findById(id);//traer datos desde bd
-res.render('edit',{
-    Movie
-});
+
+    const movie = await Movie.findById(req.params.id)//traer datos desde bd
+.then(data =>{
+    return {
+        id:data.id,
+        title:data.title,
+        year:data.year,
+        category:data.category,
+        director:data.director,
+        actors:data.actors,
+        description:data.description
+        
+    }
+})
+res.render('edit',{movie});
+
+
 });
 
 
 //editar con los datos obtenidos de la funcion anteriror
-router.post('/edit/:id',async(req, res)=>{
-    const { id } = req.params;
-    await Movie.update({_id:id},req.body);
+router.put('/edit/:id',async(req, res)=>{
+    const {title, year, category, director,actors, description} = req.body;
+    await Movie.findByIdAndUpdate(req.params.id, {title, year, category, director, actors, description});
     res.redirect('/');
+
+
+    
 });
+
+
+
 
 router.get('/delete/:id',async(req,res)=>{
 const { id } = req.params;

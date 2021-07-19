@@ -1,27 +1,45 @@
 <%-include('partials/_header');%>
+<style>
+    .card-body button{
+        background-color: rgb(66, 66, 66);
+        border-radius: 15px;
+    }
+
+    .card-body button:hover{
+        background-color: rgb(119, 119, 119);
+    }
+</style>
 <div class="container">
     <div class="row">
         <div class="col-md-5 offset-md-3">
             <div class="card-body">
-                <form action="/edit/<%= movie._id %>" method="POST">
+               
+                <form action="/edit/<%= movie.id %>?_method=PUT" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
                     <h1>Editar</h1>
+                    <h6>Titulo:</h6> 
                     <div class="form-group">
                         <input type="text" name="title" placeholder="Escribe un t&iacute;tulo" class="form-control" value="<%= movie.title %>">
+                    </div>
+                    <h6>Año:</h6>
                     <div class="form-group">
                         <input type="text" name="year" placeholder="Escribe un a&ntilde;o de 4 d&iacute;gitos" class="form-control" value="<%= movie.year %>">
                     </div>
+                    <h6>Categoria:</h6>
                     <div class="form-group">
                         <input type="text" name="category" placeholder="Escribe una categor&iacute;a" class="form-control" value="<%= movie.category %>">
                     </div>
+                    <h6>Director</h6>
                     <div class="form-group">
                         <input type="text" name="director" placeholder="Escribe nombre del director" class="form-control" value="<%= movie.director %>">
                     </div>
+                    <h6>Actores:</h6>
                     <div class="form-group">
-                        <textarea  name="actors"  cols="80" placeholder="Escribe nombres de actores" class="form-control" value="<%= movie.actors %>"></textarea>
+                        <textarea  name="actors"  cols="80" placeholder="Escribe nombres de actores" class="form-control" ><%= movie.actors %></textarea>
                     </div>
-                    </div>
+                    <h6>Descripción</h6>
                     <div class="form-group">
-                     <textarea name="description"  cols="80" class="form-control" placeholder="Escribe una descripci&oacute;n"><%= movie.description %></textarea>
+                     <textarea name="description"  cols="80" class="form-control" placeholder="Escribe una descripción"><%= movie.description %></textarea>
                  </div>
                  <button type="submit" class="btn btn-primary btn-block">Actualizar</button>
                 </form>
