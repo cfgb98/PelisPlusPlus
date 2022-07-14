@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Movie = require('../models/movie');
+const mongoose = require('mongoose');
 
 router.post('/add',async (req, res)=>{
 const {title, year, category, director, actors, description}=req.body;
@@ -31,6 +32,10 @@ router.get('/edit/:id',async(req, res)=>{
 
     const movie = await Movie.findById(req.params.id)//traer datos desde bd
 .then(data =>{
+    if(!mongoose.Types.ObjectId.isValid(data.id)){
+        console.log('data: ',data);
+        return false;
+    }
     return {
         id:data.id,
         title:data.title,
@@ -53,12 +58,7 @@ router.put('/edit/:id',async(req, res)=>{
     const {title, year, category, director,actors, description} = req.body;
     await Movie.findByIdAndUpdate(req.params.id, {title, year, category, director, actors, description});
     res.redirect('/');
-
-
-    
 });
-
-
 
 
 router.get('/delete/:id',async(req,res)=>{
